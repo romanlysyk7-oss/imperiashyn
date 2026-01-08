@@ -1,0 +1,15 @@
+.banner {
+  @apply bg-center bg-no-repeat bg-cover;
+
+  background-image: image-set(
+                  url('/images/banner/bg_3x.avif') 3x type('image/avif'),
+                  url('/images/banner/bg_2x.avif') 2x type('image/avif'),
+                  url('/images/banner/bg.avif') 1x type('image/avif'),
+                  url('/images/banner/bg_3x.webp') 3x type('image/webp'),
+                  url('/images/banner/bg_2x.webp') 2x type('image/webp'),
+                  url('/images/banner/bg.webp') 1x type('image/webp'),
+                  url('/images/banner/bg_3x.jpg') 3x type('image/jpeg'),
+                  url('/images/banner/bg_2x.jpg') 2x type('image/jpeg'),
+                  url('/images/banner/bg.jpg') 1x type('image/jpeg')
+  );
+}

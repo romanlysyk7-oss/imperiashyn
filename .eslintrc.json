@@ -1,0 +1,89 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "@feature-sliced",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    // Tailwind
+    "plugin:tailwindcss/recommended",
+    // Prettier (останній!)
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    // Поддержка JSX
+    "ecmaVersion": "latest",
+    // Поддержка ES2022+
+    "sourceType": "module"
+    // Поддержка ES-модули
+  },
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "unused-imports",
+    "import",
+    "prettier",
+    "tailwindcss"
+  ],
+  "rules": {
+    "unused-imports/no-unused-imports": "warn",
+    // Ігнор default export — у feature-based архітектурі корисно
+    "import/prefer-default-export": "off",
+    // Для чистих імпортів
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          [
+            "parent",
+            "sibling"
+          ],
+          "index",
+          "object"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    // TypeScript strictness
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    // React 18 не вимагає import React
+    "react/react-in-jsx-scope": "off",
+    // Server Components підтримка
+    "react/no-unknown-property": [
+      "error",
+      {
+        "ignore": [
+          "jsx"
+        ]
+      }
+    ],
+    // Prettier контроль
+    "prettier/prettier": "warn"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  }
+}

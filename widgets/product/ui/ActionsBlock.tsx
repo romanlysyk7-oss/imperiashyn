@@ -1,0 +1,117 @@
+'use client'
+
+import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { twMerge } from 'tailwind-merge';
+import {
+	EmailIcon,
+	EmailShareButton,
+	FacebookIcon,
+	FacebookShareButton,
+	TelegramIcon,
+	TelegramShareButton,
+	TwitterShareButton,
+	ViberIcon,
+	ViberShareButton
+} from 'next-share';
+import { addToast } from '@heroui/toast';
+
+import * as Icons from '@/shared/ui/icons';
+import { Button } from '@/shared/ui/button';
+import { Link } from '@/shared/i18n/navigation';
+import { CallbackModal } from '@/features/callback';
+import { AddToBookmarksButton } from '@/features/bookmarks/toggle';
+import { AddToComparisonButton } from '@/features/comparison/toggle/ui/AddToComparsionButton';
+import { Section } from '@/shared/types/section';
+
+interface Props {
+	id: number;
+	className: string;
+	section: Section;
+	quantity: number;
+}
+
+export function ActionsBlock({ id, className, section, quantity }: Props) {
+	const t = useTranslations('common');
+	const pathname = usePathname();
+	const url = process.env.ACCESS_ORIGIN + pathname;
+
+	const handleClick = () => {
+		navigator.clipboard.writeText(url).then(r => console.log(r));
+		addToast({
+			title: t('copy link'),
+			classNames: { base: 'text-black dark:text-gray-50', title: 'text-black dark:text-gray-50' },
+		});
+	}
+
+	return (
+		<div className={ twMerge('gap-1.5 h-full', className) }>
+			<CallbackModal productId={ id } quantity={ quantity } isProductPage={ true } />
+			<AddToBookmarksButton id={ id } section={ section } isActiveBlock={ true } />
+			<AddToComparisonButton id={ id } section={ section } isActiveBlock={ true } />
+			<Button
+				as={ Link }
+				variant='light'
+				isIconOnly
+				href={'/tyre-disk-size-calc'}
+				className='p-3 rounded-full bg-blue-50 hover:bg-gray-100/60'
+			>
+				<Icons.CalculatorIcon className='fill-gray-500' />
+			</Button>
+			<div className='w-12 h-12 p-3 bg-blue-50 rounded-full group cursor-pointer relative hover:text-primary'>
+				<Icons.ShareIcon className='fill-gray-500' />
+				<div
+					className='absolute top-10 left-0 bg-white rounded shadow-md py-4 px-6 hidden group-hover:flex flex-col gap-4 z-20'>
+					<FacebookShareButton url={ url }>
+						<div className='flex items-center gap-x-2'>
+							<FacebookIcon size={ 26 } round/>
+							<span className='text-sm font-semibold'>
+								Facebook
+							</span>
+						</div>
+					</FacebookShareButton>
+					<TelegramShareButton url={ url } className='mt-3 flex items-center gap-x-2'>
+						<div className='flex items-center gap-x-2'>
+							<TelegramIcon size={ 26 } round/>
+							<span className='text-sm font-semibold'>
+								Telegram
+							</span>
+						</div>
+					</TelegramShareButton>
+					<ViberShareButton url={ url }>
+						<div className='flex items-center gap-x-2'>
+							<ViberIcon size={ 26 } round/>
+							<span className='text-sm font-semibold'>
+								Viber
+							</span>
+						</div>
+					</ViberShareButton>
+					<TwitterShareButton url={ url }>
+						<div className='flex items-center gap-x-2'>
+							<TelegramIcon size={ 26 } round/>
+							<span className='text-sm font-semibold'>
+								Twitter
+							</span>
+						</div>
+					</TwitterShareButton>
+					<EmailShareButton url={ url }>
+						<div className='flex items-center gap-x-2'>
+							<EmailIcon size={ 26 } round/>
+							<span className='text-sm font-semibold'>
+								{ t('mail') }
+							</span>
+						</div>
+					</EmailShareButton>
+					<button onClick={ () => handleClick() }
+									className='flex items-center gap-x-2 text-sm font-semibold'>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className='fill-gray-700 w-4'>
+							<path
+								d="M384 336l-192 0c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l140.1 0L400 115.9 400 320c0 8.8-7.2 16-16 16zM192 384l192 0c35.3 0 64-28.7 64-64l0-204.1c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1L192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-32-48 0 0 32c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l32 0 0-48-32 0z"/>
+						</svg>
+						{ t('copy') }
+					</button>
+				</div>
+			</div>
+		</div>
+	)
+}

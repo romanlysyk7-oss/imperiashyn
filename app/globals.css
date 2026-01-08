@@ -1,26 +1,48 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@plugin './hero.ts';
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+	--color-amber-400: #FFBA14;
+	--color-amber-500: #FFC220;
+	--color-amber-600: #F9A702;
+
+	--color-blue-50: #E1E8F5;
+	--color-blue-200: #8BC9FF;
+	--color-blue-300: #78B7EF;
+	--color-blue-400: #3483C8;
+	--color-blue-500: #0071DC;
+	--color-blue-600: #005EB8;
+	--color-blue-700: #0057C2;
+
+	--color-gray-100: #F5F7FA;
+	--color-gray-200: #E3E7F0;
+	--color-gray-300: #C4C8CC;
+	--color-gray-500: #707680;
+	--color-gray-600: #656A73;
+	--color-gray-950: #050505;
+
+	--color-green-500: #27AE60;
+	--color-green-600: #269957;
+
+	--color-natural-400: #B0B0B0;
+
+	--color-slate-100: #F5F7FA;
+	--color-slate-200: #E4EAF0;
+
+	--color-zinc-200: #EBECF0;
+	--color-zinc-400: #9B9DA0;
+
+	--radius-small: 4px;
+
+	--foreground: #F0F0F0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme static {
+	--color-black: var(--color-gray-950);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	--color-primary: var(--color-blue-500);
+	--color-secondary: var(--color-amber-500);
 }

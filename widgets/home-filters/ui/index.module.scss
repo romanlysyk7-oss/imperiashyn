@@ -1,0 +1,29 @@
+.home-filter {
+  @apply bg-center bg-no-repeat bg-cover;
+
+  background-image: image-set(
+                  url('/images/home-filter/bg-mob_3x.avif') 3x type('image/avif'),
+                  url('/images/home-filter/bg-mob_2x.avif') 2x type('image/avif'),
+                  url('/images/home-filter/bg-mob.avif') 1x type('image/avif'),
+                  url('/images/home-filter/bg-mob_3x.webp') 3x type('image/webp'),
+                  url('/images/home-filter/bg-mob_2x.webp') 2x type('image/webp'),
+                  url('/images/home-filter/bg-mob.webp') 1x type('image/webp'),
+                  url('/images/home-filter/bg-mob_3x.jpg') 3x type('image/jpeg'),
+                  url('/images/home-filter/bg-mob_2x.jpg') 2x type('image/jpeg'),
+                  url('/images/home-filter/bg-mob.jpg') 1x type('image/jpeg')
+  );
+
+  @media screen and (min-width: 640px) {
+    background-image: image-set(
+                    url('/images/home-filter/bg_3x.avif') 3x type('image/avif'),
+                    url('/images/home-filter/bg_2x.avif') 2x type('image/avif'),
+                    url('/images/home-filter/bg.avif') 1x type('image/avif'),
+                    url('/images/home-filter/bg_3x.webp') 3x type('image/webp'),
+                    url('/images/home-filter/bg_2x.webp') 2x type('image/webp'),
+                    url('/images/home-filter/bg.webp') 1x type('image/webp'),
+                    url('/images/home-filter/bg_3x.jpg') 3x type('image/jpeg'),
+                    url('/images/home-filter/bg_2x.jpg') 2x type('image/jpeg'),
+                    url('/images/home-filter/bg.jpg') 1x type('image/jpeg')
+    );
+  }
+}
