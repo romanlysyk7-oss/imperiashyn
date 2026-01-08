@@ -31,6 +31,7 @@ export default getRequestConfig(async({ requestLocale }) => {
 		delivery: locale === Locale.UK ? (await import("@/entities/delivery/locales/uk/delivery.json")).default : (await import(`@/entities/delivery/locales/${ locale }/delivery.json`)).default,
 		order: locale === Locale.UK ? (await import("@/entities/order/locales/uk/order.json")).default : (await import(`@/entities/order/locales/${ locale }/order.json`)).default,
 		review: locale === Locale.UK ? (await import("@/entities/review/locals/uk/review.json")).default : (await import(`@/entities/review/locals/${ locale }/review.json`)).default,
+		summary: locale === Locale.UK ? (await import("@/widgets/order-summary/locales/uk/summary.json")).default : (await import(`@/widgets/order-summary/locales/${ locale }/summary.json`)).default,
 	};
 
 	return { locale, messages };

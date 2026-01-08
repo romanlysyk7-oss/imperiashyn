@@ -1,7 +1,22 @@
 {
+  "address": "Адрес (Улица, дом)",
+  "firstname": "Имя",
+  "lastname": "Фамилия",
+  "surname": "Отчество",
+  "email": "Электронная почта",
+  "error text": "Это поле обязательно",
+  "delivery and payment": "Доставка и оплата",
+  "choose a delivery method": "Выберите способ доставки",
+  "delivery method": "Способ доставки",
+  "enter valid email": "Введите правильный email",
+  "choose a payment method": "Выберите способ оплаты",
+  "add comment": "Додати коментар",
+  "your comment": "Ваш комментарий",
+  "contact details": "Контактные данные",
   "quick order": "Быстрый заказ",
   "quick order text": "Экономьте Ваше время, просто оставьте телефон и менеджер с Вами свяжется для уточнения всех деталей",
   "send": "Отправить",
   "sent order": "Заказ отправлен",
-  "our manager": "Наш менеджер позвонит Вам"
+  "our manager": "Наш менеджер позвонит Вам",
+  "payment method": "Способ оплаты"
 }

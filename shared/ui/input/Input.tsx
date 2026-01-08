@@ -4,7 +4,7 @@ export function Input(props: InputProps) {
 	return (
 		<InputUI
 			{ ...props }
-			size='lg'
+			size='md'
 			radius='sm'
 			variant='bordered'
 		/>

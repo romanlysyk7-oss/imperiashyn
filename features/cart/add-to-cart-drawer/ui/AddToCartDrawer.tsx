@@ -5,6 +5,8 @@ import { Divider, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader,
 
 import { Button } from '@/shared/ui/button';
 import { CartItem } from '@/entities/cartItem';
+import { Link } from '@/shared/i18n/navigation';
+
 import { AddToCartDrawerProps } from '../model/types';
 import { useAddToCartDrawer } from '../model/useAddToCartDrawer';
 
@@ -57,7 +59,12 @@ export function AddToCartDrawer({ isOpen, onClose, cartItems, }: AddToCartDrawer
 						</DrawerBody>
 
 						<DrawerFooter className="flex-col">
-							<Button onPress={ onClose } className="w-full">
+							<Button
+								as={ Link }
+								href='/order'
+								onPress={ onClose }
+								className="w-full"
+							>
 								{ t('place an order') }
 							</Button>
 							<Button

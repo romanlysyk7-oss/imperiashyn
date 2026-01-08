@@ -5,7 +5,6 @@ import { OrderForm } from '@/widgets/order-form/ui/OrderForm';
 
 export default function OrderPage() {
 	const path = [
-		{ title: 'cart', href: '/cart', translations: true },
 		{ title: 'placing an order', href: '/', translations: true },
 	];
 

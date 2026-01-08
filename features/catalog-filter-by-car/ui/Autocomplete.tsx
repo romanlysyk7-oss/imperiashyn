@@ -13,9 +13,11 @@ interface SelectProps {
 	onChange: (name: string, value: number | string | null, label?: number | string | null) => void;
 	defaultValue?: string;
 	isHomeFilter?: boolean;
+	variant?: 'bordered' | 'flat';
+	size?: 'sm' | 'md' | 'lg';
 }
 
-export function Autocomplete({ name, label, options = [], isDisabled = false, onChange, setState, defaultValue, isHomeFilter }: SelectProps) {
+export function Autocomplete({ name, label, options = [], isDisabled = false, onChange, setState, defaultValue, isHomeFilter, variant, size }: SelectProps) {
 	const t = useTranslations('select');
 	const [ selectedKey, setSelectedKey ] = useState<string | number | null>(defaultValue ?? null);
 
@@ -36,8 +38,9 @@ export function Autocomplete({ name, label, options = [], isDisabled = false, on
 
 	return (
 		<AutocompleteUI
-			size={ isHomeFilter ? 'lg' : "sm" }
+			size={ isHomeFilter ? 'lg' : size || "sm" }
 			radius="sm"
+			variant={ variant || 'flat' }
 			selectedKey={ selectedKey }
 			onInputChange={ handleInputChange }
 			className="max-w-full md:max-w-full"

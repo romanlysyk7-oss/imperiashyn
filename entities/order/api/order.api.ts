@@ -1,12 +1,13 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from '@/shared/api/baseQuery';
 import { API_CONSTANTS, FORM_HEADERS, formEndpoints, orderEndpoints } from '@/config/api';
+import { OrdersParamProps } from '@/entities/order/api/types.api';
 
 export const orderApi = createApi({
 	reducerPath: 'orderApi',
 	baseQuery,
 	endpoints: build => ({
-		fetchOrdersParam: build.query({
+		fetchOrdersParam: build.query<OrdersParamProps, void>({
 			query: () => ({
 				url: orderEndpoints.params,
 			}),
@@ -31,8 +32,3 @@ export const orderApi = createApi({
 		}),
 	}),
 });
-
-export const {
-	useCreateOrderMutation,
-	useCreateCallbackMutation,
-} = orderApi;
