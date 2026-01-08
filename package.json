@@ -56,6 +56,10 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
+  "overrides": {
+    "jsdom": "26.1.0",
+    "parse5": "7.1.2"
+  },
   "browserslist": [
     "last 2 Chrome versions",
     "last 2 Firefox versions",
