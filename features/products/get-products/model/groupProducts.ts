@@ -10,6 +10,6 @@ export function groupProductsBySection(
 			acc[section].push(id);
 			return acc;
 		},
-		{ tires: [], cargo: [], disks: [], battery: [], car: [] }
+		{ tires: [], cargo: [], disks: [], battery: [], car: [], special: [], moto: [] }
 	);
 }

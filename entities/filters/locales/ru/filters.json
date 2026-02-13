@@ -40,6 +40,7 @@
   "main characteristics": "Основные характеристики",
   "model": "Модель",
   "modification": "Модификация",
+  "moto": "Мотоциклы",
   "motorcycles": "Мотоциклы",
   "other": "Другое",
   "polarity": "Полярность",
@@ -49,6 +50,7 @@
   "reset everything": "Сбросить все",
   "reviews": "Отзывы",
   "season": "Сезон",
+  "special": "Спецтехника",
   "special equipment": "Спецтехника",
   "speed index": "Индекс скорости",
   "starting current": "Пусковой ток",
@@ -72,5 +74,7 @@
   "stud": "Шипованные",
   "studding": "Шиповка",
   "no stud": "Не шипованные",
-  "vehicle_type": "Тип автомобиля"
+  "vehicle_type": "Тип автомобиля",
+  "load_index": "Индекс нагрузки",
+  "speed_index": "Индекс скорости"
 }

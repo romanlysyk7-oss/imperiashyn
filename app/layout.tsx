@@ -23,7 +23,7 @@ export default async function RootLayout({ children }: { children: ReactNode; })
 			{ children }
 		</StoreProvider>
 		</body>
-		{/*<GoogleTagManager gtmId={ process.env.NEXT_PUBLIC_GTM_ID || '' } />*/}
+		<GoogleTagManager gtmId={ process.env.NEXT_PUBLIC_GTM_ID || '' }/>
 		</html>
 	);
 };

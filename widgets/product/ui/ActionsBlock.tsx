@@ -28,10 +28,9 @@ interface Props {
 	id: number;
 	className: string;
 	section: Section;
-	quantity: number;
 }
 
-export function ActionsBlock({ id, className, section, quantity }: Props) {
+export function ActionsBlock({ id, className, section }: Props) {
 	const t = useTranslations('common');
 	const pathname = usePathname();
 	const url = process.env.ACCESS_ORIGIN + pathname;
@@ -46,7 +45,7 @@ export function ActionsBlock({ id, className, section, quantity }: Props) {
 
 	return (
 		<div className={ twMerge('gap-1.5 h-full', className) }>
-			<CallbackModal productId={ id } quantity={ quantity } isProductPage={ true } />
+			<CallbackModal isProductPage={ true } />
 			<AddToBookmarksButton id={ id } section={ section } isActiveBlock={ true } />
 			<AddToComparisonButton id={ id } section={ section } isActiveBlock={ true } />
 			<Button

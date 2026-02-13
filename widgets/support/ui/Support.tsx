@@ -15,7 +15,7 @@ export function Support() {
 		setPhoneError,
 		onSubmit,
 		isLoading,
-	} = useCallbackForm({ productId: 1, quantity: 1 });
+	} = useCallbackForm({});
 
 	return (
 		<Form onSubmit={ onSubmit } className='mt-56 md:mt-16 bg-[#EAF1FF] flex justify-between flex-col-reverse md:flex-row px-8 md:px-20 relative'>

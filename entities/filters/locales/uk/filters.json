@@ -41,6 +41,7 @@
   "main characteristics": "Основні характеристики",
   "model": "Модель",
   "modification": "Модифікація",
+  "moto": "Мотоцикли",
   "motorcycles": "Мотоцикли",
   "other": "Інше",
   "polarity": "Полярність",
@@ -50,6 +51,7 @@
   "reset everything": "Скинути все",
   "reviews": "Відгуки",
   "season": "Сезон",
+  "special": "Спецтехніка",
   "special equipment": "Спецтехніка",
   "speed index": "Індекс швидкості",
   "starting current": "Пусковий струм",
@@ -74,5 +76,7 @@
   "stud": "Шиповані",
   "studding": "Шипування",
   "no stud": "Не шиповані",
-  "vehicle_type": "Тип автомобіля"
+  "vehicle_type": "Тип автомобіля",
+  "load_index": "Індекс навантаження",
+  "speed_index": "Індекс швидкості"
 }

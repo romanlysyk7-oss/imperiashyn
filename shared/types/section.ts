@@ -4,6 +4,8 @@ export enum Section {
 	Disks = 'disks',
 	Car = 'car',
 	Cargo = 'cargo',
+	Special = 'special',
+	Moto = 'moto',
 }
 
 export enum Subsection {

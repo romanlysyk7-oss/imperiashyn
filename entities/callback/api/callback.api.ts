@@ -9,7 +9,7 @@ export const callbackApi = createApi({
 	endpoints: builder => ({
 		createCallback: builder.mutation<
 			{ result: boolean },
-			{ firstname: string, phone: string; product_id: string; quantity: string }
+			{ name: string, phone: string }
 		>({
 			query: data => ({
 				url: formEndpoints.callback,

@@ -1,7 +1,10 @@
-import Dropdown from './Dropdown';
+'use client';
+
 import { useLanguage } from '@/shared/hooks/useLanguage';
 import type { ConfigSettings } from '@/shared/types/settings';
 import { CallbackModal } from '@/features/callback';
+
+import Dropdown from './Dropdown';
 
 interface ContactsProps {
 	settingsData: ConfigSettings
@@ -16,7 +19,7 @@ export function Contacts({ settingsData, isInfoBlock }: ContactsProps) {
 	return (
 		<div className='relative flex items-center gap-2'>
 			<Dropdown isInfoBlock={ isInfoBlock } phones={ phones } />
-			{ !isInfoBlock && <CallbackModal quantity={ 1 } /> }
+			{ !isInfoBlock && <CallbackModal /> }
 		</div>
 	);
 }

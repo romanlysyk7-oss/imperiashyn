@@ -21,6 +21,7 @@ import { BuyActions } from '@/widgets/product/ui/BuyActions';
 import './index.scss';
 import { CharacteristicsBlock } from '@/widgets/product/characteristics';
 import { OtherModelSizes } from '@/widgets/product/other-model-sizes/ui/OtherModelSizes';
+import { trackProductView } from '@/features/product-view/analytics/trackProductView';
 
 interface Props {
 	locale: Locale;
@@ -30,7 +31,7 @@ interface Props {
 	section: Section;
 }
 
-export function ProductPage({ locale, productSlug, productData, settingsData, section }: Props) {
+export function ProductPage({ locale, productData, settingsData, section }: Props) {
 	const [ quantity, setQuantity ] = useState(1);
 	const [ offerId, setOfferId ] = useState(0);
 	const t = useTranslations('product');
@@ -39,6 +40,7 @@ export function ProductPage({ locale, productSlug, productData, settingsData, se
 		availableQuantity,
 		brandImage,
 		brandName,
+		modelName,
 		imageBig,
 		imageSmall,
 		images,
@@ -51,10 +53,26 @@ export function ProductPage({ locale, productSlug, productData, settingsData, se
 		vehicleType,
 		offers
 	} = productData;
+	const data = {
+		name: name,
+		brand: brandName,
+		model: modelName,
+		price: price,
+	}
 
 	useEffect(() => {
 		if(productData) setOfferId(offers[0].offer_id);
 	}, [ productData ]);
+
+	useEffect(() => {
+		trackProductView(
+			productData.id,
+			productData.name,
+			productData.brandName,
+			productData.modelName,
+			productData.price,
+			section);
+	}, []);
 
 	const onChange = (e: { target: HTMLInputElement }) => {
 		const value = e.target.value;
@@ -94,7 +112,7 @@ export function ProductPage({ locale, productSlug, productData, settingsData, se
 							name={ name }
 						/>
 					</div>
-					<ActionsBlock className='flex md:hidden' id={ id } section={ section } quantity={ quantity } />
+					<ActionsBlock className='flex md:hidden' id={ id } section={ section } />
 					<div className="flex-1 md:ml-6 xl:ml-10">
 						<h1 className="text-2xl font-bold mt-8 md:mt-0">
 							{ name }
@@ -108,7 +126,7 @@ export function ProductPage({ locale, productSlug, productData, settingsData, se
 									commentsAvgRate={ 0 }
 								/>
 							</div>
-							<ActionsBlock className='hidden md:flex' id={ id } section={ section } quantity={ quantity } />
+							<ActionsBlock className='hidden md:flex' id={ id } section={ section } />
 						</div>
 
 						<div className="mt-8">
@@ -132,7 +150,7 @@ export function ProductPage({ locale, productSlug, productData, settingsData, se
 				<div className='purchase-information grid justify-self-stretch mt-5 md:mt-10 gap-3'>
 					<Quantity id={ 0 } quantity={ quantity } offerQuantity={ availableQuantity } price={ price } onChange={ onChange } setQuantity={ onSetQuantity }/>
 					<DeliveryCalculation offer_id={ offerId } quantity={ quantity } setQuantity={ setQuantity } price={ price } />
-					<BuyActions id={ offerId } quantity={ quantity } section={ section } offerItem={ offers.find(offer => offer.offer_id === offerId) } />
+					<BuyActions id={ offerId } quantity={ quantity } section={ section } offerItem={ offers.find(offer => offer.offer_id === offerId) } data={ data } />
 				</div>
 				<CharacteristicsBlock locale={ locale } product={ productData } section={ section } />
 				{ section !== Section.Battery &&

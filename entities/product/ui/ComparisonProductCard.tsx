@@ -16,6 +16,13 @@ interface Props {
 }
 
 export function ComparisonProductCard({ product, handleClick, type, section }: Props) {
+	const data = {
+		name: product.full_name,
+		brand: product.brand_name,
+		model: product.model.name,
+		price: product.min_price,
+	}
+
 	return (
 		<div>
 			<div className="w-72 relative m-1 min-h-60 bg-white">
@@ -41,7 +48,7 @@ export function ComparisonProductCard({ product, handleClick, type, section }: P
 					product={ product }
 				/>
 				<div className="pt-2 pb-14 px-1">
-					<AddToCart isProductPage id={ product.best_offer.id || 0 } quantity={ 1 } section={ section }/>
+					<AddToCart isProductPage id={ product.best_offer.id || 0 } quantity={ 1 } section={ section } data={ data } />
 				</div>
 			</div>
 		</div>

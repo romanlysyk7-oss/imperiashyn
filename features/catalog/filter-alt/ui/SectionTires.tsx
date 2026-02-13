@@ -15,20 +15,13 @@ import { baseDataApi } from '@/entities/base-data/api/baseData.api';
 
 import { SectionTiresProps } from '../model/types';
 
-const section = Section.Tires;
-const CARGO = ['vt-3', 'vt-4', 'vt-5', 'vt-6'];
-const SPECIAL_EQUIPMENT = ['vt-9', 'vt-10', 'vt-11'];
-
-export function SectionTires({ filterData, car, slug }: SectionTiresProps) {
+export function SectionTires({ filterData, car, slug, section }: SectionTiresProps) {
 	const t = useTranslations('filters');
 	const locale = useLocale();
 	const { data } = baseDataApi.useFetchBaseDataQuery();
 	const value = slug?.find(item => /^b-\d+$/.test(item));
 	const number = value ? Number(value.split('-')[1]) : null;
 	const { data: manufModels } = baseDataApi.useFetchManufModelsQuery(`${ number }`);
-	const vt = slug?.find(item => item.startsWith('vt-'));
-	const isCargo = vt && CARGO.includes(vt);
-	const isSpecialEquipment = vt && SPECIAL_EQUIPMENT.includes(vt);
 	const country = locale === Locale.UK ? data?.country : data?.country_ru;
 
 	return (
@@ -63,7 +56,7 @@ export function SectionTires({ filterData, car, slug }: SectionTiresProps) {
 					})) || [] }
 				/>
 			</> }
-			{ isCargo || isSpecialEquipment || <>
+			{ section === Section.Cargo || section === Section.Special || <>
 				<Autocomplete
 					name='sezon'
 					label={ t('season') }
@@ -87,7 +80,7 @@ export function SectionTires({ filterData, car, slug }: SectionTiresProps) {
 					})) }
 				/> }
 			</> }
-			{ isCargo && <Autocomplete
+			{ section === Section.Cargo && <Autocomplete
 				name='vehicle_type'
 				label={ t('appointment') }
 				checkboxKey='vt-'
@@ -98,7 +91,7 @@ export function SectionTires({ filterData, car, slug }: SectionTiresProps) {
 					label: locale === Locale.UK ? item.name_ua : item.name
 				})) }
 			/> }
-			{ isSpecialEquipment && <Autocomplete
+			{ section === Section.Special && <Autocomplete
 				name='vehicle_type'
 				label={ t('appointment') }
 				checkboxKey='vt-'
@@ -143,7 +136,7 @@ export function SectionTires({ filterData, car, slug }: SectionTiresProps) {
 				section={ section }
 				options={ data?.tyre_year.map(item => ({ value: String(item.value), label: String(item.label) })) || [] }
 			/>
-			{ isCargo || isSpecialEquipment || <>
+			{ section === Section.Cargo || section === Section.Special || <>
 				<Autocomplete
 					name='li'
 					label={ t('load index') }

@@ -5,6 +5,7 @@ export interface SectionTiresProps {
 	car?: string | null;
 	filterData?: BaseDataApi;
 	slug?: string[];
+	section: Section;
 }
 
 export interface FilterAltProps {

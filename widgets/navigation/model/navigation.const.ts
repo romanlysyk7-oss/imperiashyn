@@ -27,19 +27,19 @@ export const TYPE_CAR = [
 	},
 	{
 		label: 'cargo',
-		href: '/catalog/tires/vt-3', // vehicle_type=3,4,5,6
+		href: '/catalog/cargo', // vehicle_type=3,4,5,6
 		icon: '3' as const,
 		vehicleType: ['3','4','5','6'],
 	},
 	{
 		label: 'special equipment',
-		href: '/catalog/tires/vt-9', //vehicle_type=9,10,11
+		href: '/catalog/special', //vehicle_type=9,10,11
 		icon: '9' as const,
 		vehicleType: ['9','10','11'],
 	},
 	{
 		label: 'motorcycles',
-		href: '/catalog/tires/vt-7',
+		href: '/catalog/moto',
 		icon: '7' as const,
 		vehicleType: ['7'],
 	},

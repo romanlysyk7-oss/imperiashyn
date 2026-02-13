@@ -1,11 +1,11 @@
 import { NavigationItem } from "./navigation.types";
 
 export const MAIN_NAVIGATION: NavigationItem[] = [
-	{
-		id: "accumulators",
-		label: "accumulators",
-		href: "/catalog/battery",
-	},
+	// {
+	// 	id: "accumulators",
+	// 	label: "accumulators",
+	// 	href: "/catalog/battery",
+	// },
 	{
 		id: "calculator",
 		label: "tire calculator",

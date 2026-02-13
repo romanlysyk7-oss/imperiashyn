@@ -24,6 +24,12 @@ export function ProductCard({ item }: Props): JSX.Element {
 	const { default_photo, full_name, sku, min_price, season, vehicle_type, page_url, best_offer, model, studded } = item;
 	const section = item.vehicle_type ? Section.Tires : item.diameter ? Section.Disks : Section.Battery;
 	const sectionNew = section === Section.Tires ? cargo.includes(item.vehicle_type) ? Section.Cargo : Section.Tires : section;
+	const data = {
+		name: item.full_name,
+		brand: item.brand_name,
+		model: item.model.name,
+		price: item.min_price,
+	}
 
 	return (
 		<Card
@@ -50,7 +56,7 @@ export function ProductCard({ item }: Props): JSX.Element {
 			</CardBody>
 			<CardFooter className='justify-between'>
 				<ProductPrice min_price={ min_price } sectionIsBattery={ section === Section.Battery }/>
-				<AddToCart id={ best_offer?.id || 0 } quantity={ 1 } section={ sectionNew }/>
+				<AddToCart id={ best_offer?.id || 0 } quantity={ 1 } section={ sectionNew } data={ data } />
 			</CardFooter>
 		</Card>
 	)

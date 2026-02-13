@@ -5,10 +5,13 @@ import { useTranslations } from 'next-intl';
 import { addToast } from '@heroui/toast';
 
 import { useCreateCallbackMutation } from '@/entities/callback/api/callback.api';
-import { CallbackPayload } from './types';
 import { formatPhoneNumber } from '@/shared/lib/phone/formatPhoneNumber';
 
-export function useCallbackForm({ productId, quantity }: CallbackPayload) {
+interface Props {
+	onClose?: () => void;
+}
+
+export function useCallbackForm({ onClose }: Props) {
 	const t = useTranslations('callbackModal');
 	const [ phoneError, setPhoneError ] = useState<string | null>(null);
 	const [ createCallback, { isLoading } ] = useCreateCallbackMutation();
@@ -19,7 +22,7 @@ export function useCallbackForm({ productId, quantity }: CallbackPayload) {
 
 		const formData = new FormData(event.currentTarget);
 		const phoneRaw = formData.get('phone') as string;
-		const firstname = formData.get('username') as string;
+		const name = formData.get('username') as string;
 		const phone = formatPhoneNumber(phoneRaw);
 
 		if(phone.length < 13) {
@@ -29,12 +32,11 @@ export function useCallbackForm({ productId, quantity }: CallbackPayload) {
 
 		const res = await createCallback({
 			phone,
-			firstname,
-			product_id: productId?.toString() || '1',
-			quantity: quantity.toString(),
+			name: name ? name : '',
 		}).unwrap();
 
 		if(res.result) {
+			onClose && onClose();
 			addToast({
 				title: t('sent message'),
 				description: t('our manager'),

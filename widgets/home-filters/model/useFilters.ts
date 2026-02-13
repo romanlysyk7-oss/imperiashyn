@@ -22,7 +22,7 @@ export function useFilters(section: Section) {
 
 	const onSubmit = useCallback(() => {
 		setIsLoading(true);
-		const url = buildFiltersUrl(filter, locale, section);
+		const url = buildFiltersUrl(filter, section);
 		router.push(url);
 	}, [ filter, locale, router ]);
 

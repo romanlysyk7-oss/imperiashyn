@@ -54,7 +54,7 @@ export function FooterContacts({ settings }: Props) {
 
 				<HtmlContent htmlString={ settings.locales[lang].open || '' } className='text-white' />
 				<HtmlContent htmlString={ settings.locales[lang].address || '' } className='text-white' />
-				<CallbackModal quantity={ 1 } color='primary' />
+				<CallbackModal color='primary' />
 			</div>
 		</div>
 	);

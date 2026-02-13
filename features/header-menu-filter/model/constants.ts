@@ -133,15 +133,15 @@ export const DIAMETER = [
 	},
 	{
 		label: 'R17.5',
-		href: '/catalog/tires/d-17,5',
+		href: '/catalog/tires/d-17.5',
 	},
 	{
 		label: 'R19.5',
-		href: '/catalog/tires/d-19,5',
+		href: '/catalog/tires/d-19.5',
 	},
 	{
 		label: 'R22.5',
-		href: '/catalog/tires/d-22,5',
+		href: '/catalog/tires/d-22.5',
 	},
 ];
 
@@ -200,10 +200,6 @@ export const DISKS_BRAND = [
 	{
 		label: 'Rial',
 		href: '/catalog/disks/b-476',
-	},
-	{
-		label: 'Replica',
-		href: '/catalog/disks/b-541',
 	},
 	{
 		label: 'Ronal',
@@ -313,15 +309,15 @@ export const DISK_DIAMETERS = [
 	},
 	{
 		label: 'R17.5',
-		href: '/catalog/disks/d-17,5',
+		href: '/catalog/disks/d-17.5',
 	},
 	{
 		label: 'R19.5',
-		href: '/catalog/disks/d-19,5',
+		href: '/catalog/disks/d-19.5',
 	},
 	{
 		label: 'R22.5',
-		href: '/catalog/disks/d-22,5',
+		href: '/catalog/disks/d-22.5',
 	},
 ];
 

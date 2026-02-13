@@ -26,7 +26,7 @@ export function Summary({ products, isLoading, total, loading }: Props) {
 	return (
 		<div className='w-full lg:w-96'>
 			<div ref={ ref }></div>
-			<div className={ twMerge('bg-white w-full lg:w-96 dark:bg-[#333333]', !inView && 'lg:fixed top-4') }>
+			<div className={ twMerge('bg-white w-full lg:w-96', !inView && 'lg:fixed top-4 z-10') }>
 				<div className='pt-5 pb-2 px-6'>
 					<h3 className='font-bold'>{ t('your order') }</h3>
 					{ isLoading && <Spinner /> }

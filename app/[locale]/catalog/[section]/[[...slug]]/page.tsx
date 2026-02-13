@@ -7,6 +7,7 @@ import { CatalogHeader, CatalogToolbar } from '@/widgets/catalog';
 import { ActiveFilters, CatalogProducts, SelectionByCar } from '@/features/catalog';
 import { transformUrl } from '@/features/catalog/model/transformUrl';
 import { Support } from '@/widgets/support';
+import { TypeTires } from '@/features/catalog/model/typeTires';
 
 const pageItem = 12;
 const sort = {
@@ -18,10 +19,11 @@ const sort = {
 
 export default async function Page({ params }: { params: Promise<{ locale: Locale, section: Section, slug?: string[] }> }) {
 	const { locale, section, slug } = await params;
-	const filterData = await getFilterData(`?typeproduct=${section === Section.Disks ? 3 : section === Section.Battery ? 4 : section === Section.Cargo ? 2 : 1}`);
+	const filterData = await getFilterData(`?typeproduct=${section === Section.Disks ? 3 : section === Section.Battery ? 4 : section === Section.Cargo || section === Section.Special ? 2 : 1}`);
 	const paramsUrl = transformUrl({ section, slug: slug || [] });
 	const found = slug?.find(item => item.startsWith('order-'))?.split('-')[1] as keyof typeof sort;
-	const searchParams = `?${paramsUrl || ''}${found && sort[found] ? sort[found] : ''}`;
+	const typeTires = TypeTires(section);
+	const searchParams = `?${paramsUrl || ''}${ slug?.some(item => item.startsWith('vt-')) ? '' : typeTires || ''}${found && sort[found] ? sort[found] : ''}`;
 	const value = slug?.find(item => item.startsWith('p-'));
 	const pageFrom = value ? parseInt(value.split('-')[1], 10) : null;
 	const car = slug?.find(segment => segment.startsWith('car-')) || null;

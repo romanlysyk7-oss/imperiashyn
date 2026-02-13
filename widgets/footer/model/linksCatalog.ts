@@ -15,8 +15,8 @@ export const linksCatalog = [
 		href: '/catalog/tires/vt-7',
 		title: 'motorcycle tires',
 	},
-	{
-		href: '/catalog/battery',
-		title: 'accumulators',
-	},
+	// {
+	// 	href: '/catalog/battery',
+	// 	title: 'accumulators',
+	// },
 ];

@@ -31,7 +31,9 @@ export const transformUrl = (
 		[Section.Battery]: 'typeproduct=4&',
 		[Section.Disks]: 'typeproduct=3&',
 		[Section.Tires]: (filter.vehicle_type && special.includes(filter.vehicle_type)) ? 'typeproduct=2&' : '',
-		[Section.Cargo]: (filter.vehicle_type && special.includes(filter.vehicle_type)) ? 'typeproduct=2&' : '',
+		[Section.Cargo]: 'typeproduct=2&',
+		[Section.Special]: 'typeproduct=2&',
+		[Section.Moto]: '',
 		[Section.Car]: '',
 	};
 

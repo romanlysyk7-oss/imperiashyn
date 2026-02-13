@@ -12,15 +12,13 @@ import { Input } from '@/shared/ui/input/Input';
 import * as Icons from '@/shared/ui/icons';
 
 interface Props {
-	productId?: number;
-	quantity: number;
 	color?: 'default' | 'primary';
 	isProductPage?: boolean;
 }
 
-export function CallbackModal({ productId, quantity, color = 'default', isProductPage }: Props) {
+export function CallbackModal({ color = 'default', isProductPage }: Props) {
 	const t = useTranslations('callbackModal');
-	const { isOpen, onOpen, onOpenChange } = useDisclosure();
+	const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
 	const {
 		phoneRef,
@@ -28,7 +26,7 @@ export function CallbackModal({ productId, quantity, color = 'default', isProduc
 		setPhoneError,
 		onSubmit,
 		isLoading,
-	} = useCallbackForm({ productId, quantity });
+	} = useCallbackForm({ onClose });
 
 	useEffect(() => {
 		if(isOpen) {
