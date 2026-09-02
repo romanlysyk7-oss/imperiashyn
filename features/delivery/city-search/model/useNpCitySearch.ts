@@ -18,13 +18,17 @@ export function useNpCitySearch() {
 
 	const { data } = deliveryApi.useFetchNpAllCityQuery(query);
 
-	const cityOptions: CityOption[] =
-		data?.original?.[0]?.Addresses?.map(
-			(item: { Ref: string; MainDescription: string }) => ({
-				value: item.Ref,
-				label: item.MainDescription,
-			})
-		) ?? [];
+	const addresses =
+		data?.original?.[0]?.Addresses ??
+		data?.[0]?.Addresses ??
+		[];
+
+	const cityOptions: CityOption[] = addresses.map(
+		(item: { Ref: string; MainDescription: string }) => ({
+			value: item.Ref,
+			label: item.MainDescription,
+		})
+	);
 
 	const onSelect = (key: string | number | null) => {
 		const selected = cityOptions.find(i => i.value === key);
